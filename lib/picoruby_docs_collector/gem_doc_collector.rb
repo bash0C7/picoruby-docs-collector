@@ -1,7 +1,7 @@
 require_relative 'rbs_parser'
 require_relative 'readme_parser'
 
-module PicorubyDocs
+module PicorubyDocsCollector
   class GemDocCollector
     def initialize(gem_dir, rbs_parser: nil, readme_parser: nil)
       @gem_dir       = gem_dir
@@ -31,7 +31,7 @@ module PicorubyDocs
       sections = rbs_files.filter_map do |rbs_file|
         @rbs_parser.parse(File.read(rbs_file)).to_doc
       rescue => e
-        warn "PicorubyDocs: RBS parse failed: #{rbs_file} (#{e.message})"
+        warn "PicorubyDocsCollector: RBS parse failed: #{rbs_file} (#{e.message})"
         nil
       end
 
@@ -44,7 +44,7 @@ module PicorubyDocs
 
       @readme_parser.parse(File.read(readme_path))
     rescue => e
-      warn "PicorubyDocs: README parse failed: #{readme_path} (#{e.message})"
+      warn "PicorubyDocsCollector: README parse failed: #{readme_path} (#{e.message})"
       nil
     end
   end

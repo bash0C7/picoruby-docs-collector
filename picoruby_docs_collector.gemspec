@@ -1,5 +1,5 @@
 Gem::Specification.new do |spec|
-  spec.name          = 'picoruby_docs'
+  spec.name          = 'picoruby_docs_collector'
   spec.version       = '0.1.0'
   spec.summary       = 'picoruby_docs collector for ruby knowledge DB'
   spec.authors       = ['bash0C7']

@@ -1,4 +1,4 @@
-module PicorubyDocs
+module PicorubyDocsCollector
   class ReadmeParser
     # @param readme_source [String]
     # @return [String, nil]

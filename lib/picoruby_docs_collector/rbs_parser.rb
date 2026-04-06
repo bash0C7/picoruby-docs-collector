@@ -1,4 +1,4 @@
-module PicorubyDocs
+module PicorubyDocsCollector
   class RbsParser
     ParsedRbs = Struct.new(:class_name, :sidebar_tag, :constants, :instance_methods, :class_methods, :attributes, keyword_init: true) do
       def to_doc

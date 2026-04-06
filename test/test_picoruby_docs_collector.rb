@@ -1,9 +1,9 @@
 require_relative 'test_helper'
 require 'tmpdir'
 require 'fileutils'
-require_relative '../lib/picoruby_docs/rbs_parser'
-require_relative '../lib/picoruby_docs/readme_parser'
-require_relative '../lib/picoruby_docs/collector'
+require_relative '../lib/picoruby_docs_collector/rbs_parser'
+require_relative '../lib/picoruby_docs_collector/readme_parser'
+require_relative '../lib/picoruby_docs_collector/collector'
 
 # ---- RbsParser tests ----
 
@@ -24,7 +24,7 @@ class TestRbsParser < Test::Unit::TestCase
   RBS
 
   def setup
-    @parser = PicorubyDocs::RbsParser.new
+    @parser = PicorubyDocsCollector::RbsParser.new
   end
 
   def test_parse_class_name
@@ -71,7 +71,7 @@ end
 
 class TestReadmeParser < Test::Unit::TestCase
   def setup
-    @parser = PicorubyDocs::ReadmeParser.new
+    @parser = PicorubyDocsCollector::ReadmeParser.new
   end
 
   def test_parse_returns_stripped_content
@@ -102,7 +102,7 @@ class TestPicorubyDocsCollector < Test::Unit::TestCase
       gem_dir = File.join(tmpdir, 'mrbgems', 'picoruby-gpio')
       FileUtils.mkdir_p(gem_dir)
 
-      collector = PicorubyDocs::Collector.new(
+      collector = PicorubyDocsCollector::Collector.new(
         { 'repo_path' => tmpdir },
         gem_doc_collector_class: FakeGemDocCollector
       )
@@ -119,7 +119,7 @@ class TestPicorubyDocsCollector < Test::Unit::TestCase
       gem_dir = File.join(tmpdir, 'mrbgems', 'picoruby-adc')
       FileUtils.mkdir_p(gem_dir)
 
-      collector = PicorubyDocs::Collector.new(
+      collector = PicorubyDocsCollector::Collector.new(
         { 'repo_path' => tmpdir },
         gem_doc_collector_class: FakeGemDocCollector
       )
@@ -134,7 +134,7 @@ class TestPicorubyDocsCollector < Test::Unit::TestCase
     Dir.mktmpdir do |tmpdir|
       FileUtils.mkdir_p(File.join(tmpdir, 'mrbgems'))
 
-      collector = PicorubyDocs::Collector.new(
+      collector = PicorubyDocsCollector::Collector.new(
         { 'repo_path' => tmpdir },
         gem_doc_collector_class: FakeGemDocCollector
       )
@@ -147,7 +147,7 @@ class TestPicorubyDocsCollector < Test::Unit::TestCase
       FileUtils.mkdir_p(File.join(tmpdir, 'mrbgems', 'picoruby-gpio'))
       FileUtils.mkdir_p(File.join(tmpdir, 'mrbgems', 'mruby-file-stat'))
 
-      collector = PicorubyDocs::Collector.new(
+      collector = PicorubyDocsCollector::Collector.new(
         { 'repo_path' => tmpdir },
         gem_doc_collector_class: FakeGemDocCollector
       )

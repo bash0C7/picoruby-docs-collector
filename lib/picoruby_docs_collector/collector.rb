@@ -1,6 +1,6 @@
 require_relative 'gem_doc_collector'
 
-module PicorubyDocs
+module PicorubyDocsCollector
   class Collector
     SOURCE_PREFIX = 'picoruby/picoruby:docs'
 
