@@ -11,8 +11,9 @@ module PicorubyDocsCollector
 
     # since: は無視（常に全件収集。content_hash で冪等性を担保）
     # @param since [String, nil]
+    # @param before [String, nil]
     # @return [Array<{content: String, source: String}>]
-    def collect(since: nil)
+    def collect(since: nil, before: nil)
       results = []
       mrbgem_dirs.each do |gem_dir|
         gem_name  = File.basename(gem_dir)
